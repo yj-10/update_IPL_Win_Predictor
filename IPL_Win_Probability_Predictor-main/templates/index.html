@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='infosense icon.ico')}}">
+    <title>IPL Win Predictor</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <style>
+      :root {
+        /* --bg-color: rgba(46, 211, 233, 0.288); */
+        --bg-color: rgb(2 122 241 / 65%);
+        --bg-color2: rgba(39, 43, 43, 0.753);
+        --color: black;
+        --color1: white;
+      }
+
+      .headers {
+        width: 100% !important;
+
+        position: relative;
+        top: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        min-height: 80px;
+        background-color: #fff;
+        z-index: 100;
+        box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
+      }
+      .img-box {
+        /* width: 500px;
+        height: 500px;
+        display: block;
+        overflow: hidden; */
+      }
+      .img-box .img {
+        /* height: 100%;
+        width: 100%; */
+      }
+
+      .form-container {
+        display: block;
+        padding: 20px;
+        border-radius: 5px;
+        height: auto;
+        overflow: hidden;
+        background-color: var(--bg-color); 
+        display: block;
+        position: relative; 
+        box-shadow:  2px 2px 5px #babeccc7,  -5px -5px 10px #ffffff83;
+       }
+      .form-container input,
+      select {
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        padding: 20px 10px;
+        border-radius: 15px;
+        outline: none;
+        width: 100%;
+        border: none;
+        margin: 10px 0px;
+        box-shadow: 1px 1px 2px #babeccc7, -2px -2px 5px #ffffff83;
+      } 
+   
+      .form-container input:focus {
+        box-shadow: inset 1px 1px 2px #babeccc7, inset -2px -2px 5px #ffffff83;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      
+    
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="headers">
+      <div class="">
+        <img
+          src="https://infosense.tech/_next/static/media/logo.d34a12c6.png"
+          style="height: 45px; width: 180px"
+          alt="no-img"
+        />
+      </div>
+  
+      <div style="padding-top: 15px">
+        <p>Contact Us :- +91 - 9343017165</p>
+      </div>
+    </div>
+    <!-- header  -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-6 col-sm-12 col-xl-6 col-xxl-6 "> 
+          <div class="img-box">
+            <!-- <img src="cricket.jpg" class="img-fluid w-100 " style="margin-top: 100px;"  alt="" /> -->
+            <img src="{{url_for('static', filename='man-playing.jpg')}}" class="img-fluid w-100 " style="margin-top: 100px;"  alt="" />
+            <!-- <img src="crkt.jpg" class="img-fluid w-100 " style="margin-top: 100px;"  alt="" /> -->
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-6 col-sm-12 col-xl-6 col-xxl-6  " style="margin-top: 100px;">
+       <div class="form-container">
+
+        <div class="mb-3">
+          <h2 class="text-center" style="color: white;">IPL Win Predictor</h2>
+        </div>
+
+          <form action="/predict" method="POST">
+      <div class=" d-flex  ">
+     
+        <select class="", name="Batting_Team", id="Batting_Team" required>
+        <option selected value="">Select The Batting_Team</option>
+          <option>Sunrisers Hyderabad</option>
+          <option>Mumbai Indians</option>
+          <option>Royal Challengers Bangalore</option>
+          <option>Kolkata Knight Riders</option>
+          <option>Kings XI Punjab</option>
+          <option>Chennai Super Kings</option>
+          <option>Rajasthan Royals</option>
+          <option>Delhi Capitals</option>
+        </select>
+
+        &nbsp;
+        &nbsp;
+        <select class="", name="Bowling_Team",id="Bowling_Team" required>
+          <option selected value="">Select The Bowling Team</option>
+          <option>Sunrisers Hyderabad</option>
+          <option>Mumbai Indians</option>
+          <option>Royal Challengers Bangalore</option>
+          <option>Kolkata Knight Riders</option>
+          <option>Kings XI Punjab</option>
+          <option>Chennai Super Kings</option>
+          <option>Rajasthan Royals</option>
+          <option>Delhi Capitals</option>
+        </select>
+      </div>
+
+      <div class=" mb-2">
+        <select class="", name="City",id="City" required>
+          <option selected value="">Select Host City</option>
+          <option>Hyderabad</option>
+          <option>Bengaluru</option>
+          <option>Mumbai</option>
+          <option>Indore</option>
+          <option>Kolkata</option>
+          <option>Delhi</option>
+          <option>Chandigarh</option>
+          <option>Cape Town</option>
+          <option>Chennai</option>
+          <option>Port Elizabeth</option>
+          <option>Durban</option>
+          <option>Centurion</option>
+          <option>East London</option>
+          <option>Johannesburg</option>
+          <option>Kimberley</option>
+          <option>Bloemfontein</option>
+          <option>Ahmedabad</option>
+          <option>Cuttack</option>
+          <option>Nagpur</option>
+          <option>Dharamsala</option>
+          <option>Visakhapatnam</option>
+          <option>Pune</option>
+          <option>Raipur</option>
+          <option>Ranchi</option>
+          <option>Abu Dhabi</option>
+          <option>Sharjah</option>
+          <option>Mohali</option>
+          <option>Jaipur</option>
+        
+        </select>
+
+        
+        <!-- <label style="font-weight: bold;">Select Host City</label>
+        <input type="text" name="" placeholder="Select Host City" id="" class="">  -->
+        
+      </div>
+
+      <div class="mb-2">
+        <!-- <label style="font-weight: bold;">Target</label> -->
+        <input type="text" name="Target" placeholder="Target" id="Target" required>
+      </div>
+
+
+      <div class=" d-flex">
+        
+        <input type="text" placeholder="Score" name="Score" id="Score" required> &nbsp;
+        &nbsp;
+        
+        <input type="text" placeholder="Over Completed" name="Over_Completed" id="Over_Completed" required> &nbsp;
+        &nbsp;
+        
+        <input type="text" placeholder="Wickets Out" name="Wickets_Out" id="Wickets_Out" required> &nbsp;
+        &nbsp;
+
+      </div>
+     
+      
+      <div class="mb-2">
+        <!-- <button type="submit" class="btn btn-info w-100">Predict Probability</button> -->
+        <button type="submit" class="btn btn-info w-100" style="color: #ffffff; background-color: #db4545;">Predict Probability</button>
+        
+      </div>
+      &nbsp;
+      <div style="color: white;">
+      <div>
+        <h3>{{result1}}</h3>
+      </div>
+      &nbsp;
+      <div>
+        <h3>{{result2}}</h3>
+      </div>
+    </div>
+       </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="footer-wrapper">
+      <div class="container">
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-6 col-sm-12 col-md-6">
+            <div class="footer_content text-capitalize">
+              Copyright © InfosenseAI Pvt. Ltd.
+              <script>
+                new Date().getFullYear();
+              </script>
+             2023 All rights reserved
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <ul>
+              <li>
+              <a href="https://www.facebook.com/infosense.tech/">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/infosense-ai/mycompany/">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/InfosenseAI">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/infosenseai/">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+  .form-box {
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+  }
+  .form-box button {
+    background-color: rgba(0, 238, 255, 0.644);
+    border: none;
+    outline: none;
+    padding: 10px 0px;
+    margin: 10px;
+    border-radius: 20px;
+    width: 100%;
+    color: white;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+  }
+  .footer-wrapper {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin-top: 170px;
+    width: 100%;
+    background-color: #046e7c;
+    color: white;
+    text-align: center;
+    padding: 10px 0px;
+  }
+
+  .footer-wrapper ul {
+    position: relative;
+  }
+  .footer-wrapper ul li {
+    list-style-type: none;
+    margin: 0px 10px;
+    margin-top: 12px;
+    display: inline-block;
+  }
+
+  .footer-wrapper ul li i{
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(45deg, #5ffaff93, #71eaff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-size: 14px;
+  }
+</style>
